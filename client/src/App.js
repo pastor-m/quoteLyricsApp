@@ -9,22 +9,7 @@ const App = () => {
     const [songImage, setSongImage] = useState('');
     const [songTitle, setSongTitle] = useState('');
     const [songReleaseDate, setSongReleaseDate] = useState('');
-    const [lyricsUrl, setLyricsUrl] = useState('');
     const [error, setError] = useState('');
-
-    const searchLyrics = async () => {
-      try {
-        setError('');
-        setLyricsUrl('');
-        const { data } = await axios.get('http://localhost:5000/api/lyrics', {
-          params: { song },
-        });
-  
-        setLyricsUrl(data.url);
-      } catch (error) {
-        setError(error.response?.data?.error || 'An error occurred while fetching the lyrics');
-      }
-    };
 
     const searchSong = async () => {
         setError('');

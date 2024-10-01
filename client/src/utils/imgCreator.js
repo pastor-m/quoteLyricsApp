@@ -1,55 +1,19 @@
-import {JSX, Builder, loadImage } from 'canvacord';
+// import {JSX, Builder } from 'canvacord';
+// import { Canvas, createCanvas, Image, loadImage, SKRSContext2D } from '@napi-rs/canvas';
 
-export class MusicCard extends Builder {
-    constructor(){
-        super(290,930);
-        this.bootstrap({
-            artist:"",
-            title:"",
-            date:"",
-            image:"",
-        })
-    }
+// const canvas = createCanvas(200,200)
+// const ctx = canvas.getContext('2d')
 
-    setImage(image){
-        this.options.set("image", image);
-        return this
-    }
+// ctx.lineWidth = 10
+// ctx.strokeStyle = '#03a9f4'
+// ctx.fillStyle = '#03a9f4'
 
-    setTitle(title) {
-        this.options.set("title", title);
-        return this;
-    }
+// export default async function createImage(imageURL){
+//   const musicImage = await loadImage(imageURL)
 
-    setArtist(artist){
-        this.options.set("artist", artist);
-        return this;
-    }
+//   ctx.drawImage(musicImage, canvas.width / 2, canvas.height / 2)
 
-    setDate(date){
-        this.options.set("date", date)
-    }
+//   const pngData = await canvas.encode('png')
 
-    async render() {
-        const {artist, title, date, image} = this.options.getOptions();
-        const art = await loadImage(image);
-        return JSX.createElement(
-            "div",
-            {
-                style: {
-                    background: 'white',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 8,
-                    borderRadius: '0.5rem',
-                    height: '100%',
-                    width: '100%'
-                },
-            },
-            JSX
-        )
-    }
-
-}
+//   document.body.appendChild(pngData);
+// }

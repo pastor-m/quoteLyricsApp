@@ -52,6 +52,23 @@ const GENIUS_API_TOKEN = process.env.GENIUS_API_TOKEN;
     }
   })
 
+  app.get('/api/proxy-image', async (req,res)=>{
+    const imageUrl = req.query.url;
+
+    try {
+      const response = await axios.get(imageUrl, {
+        responseType: 'arraybuffer',
+      });
+
+      res.set('Content-Type', 'image/png');
+      res.send(response.data)
+      
+    } catch (error) {
+      console.error('Error fetching image:', error);
+      res.status(500).send('Failed to fetch image');
+    }
+  })
+
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
